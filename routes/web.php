@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontHomeController;
+use App\Http\Controllers\Back\BackHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,13 @@ require __DIR__ . '/auth.php';
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+Route::prefix('back')->name('back.')->group(function () {
+    Route::get('/', BackHomeController::class)->middleware('admin')->name('index');
+    Route::view('/login', 'back.auth.login');
+    Route::view('/register', 'back.auth.register');
+    Route::view('/forget-password', 'back.auth.forget-password');
+});
 
 Route::get('/', function () {
     return view('welcome');
