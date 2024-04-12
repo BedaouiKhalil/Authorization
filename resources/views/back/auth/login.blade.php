@@ -23,7 +23,7 @@
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                        <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('back.login') }}" method="POST">
                             @csrf
 
                             {{-- Email --}}
@@ -66,7 +66,7 @@
 
                         <p class="text-center">
                             <span>New on our platform?</span>
-                            <a href="{{ route('register') }}">
+                            <a href="{{ route('back.password.request') }}">
                                 <span>Create an account</span>
                             </a>
                         </p>
